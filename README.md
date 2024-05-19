@@ -3,6 +3,7 @@
  Prorgramming: Nida, Agne, Ugnius
  
  3D Models: Augustas
+ Audio: Augustas
  
  Levels: Joris, Greta
 
