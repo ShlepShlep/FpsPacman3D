@@ -1,11 +1,6 @@
 # FpsPacman3D
-
- Prorgramming: Nida, Agne, Ugnius
- 
- 3D Models: Augustas
- Audio: Augustas
- 
- Levels: Joris, Greta
-
- webgl link: https://play.unity.com/mg/other/webgl-builds-410668
- 
+- **Programming**: Nida, Agne, Ugnius
+- **3D Models**: Augustas
+- **Audio**: Augustas
+- **Levels**: Joris, Greta
+[Play FpsPacman3D on Unity WebGL](https://play.unity.com/mg/other/webgl-builds-410668)
