@@ -16,19 +16,24 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public GameObject warningMark;
 
-    //Patroling
+    [Header("Audio")]
+    public AudioSource attackSource;
+    public AudioClip attackClip;
+
+    [Header("Patrolling")]
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    //Attacking
+    [Header("Atacking")]
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     //public GameObject projectile;
 
-    //States
+    [Header("States")]
     public float attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    public bool isPlayedAudio;
 
     private void Awake()
     {
@@ -44,6 +49,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        
+
         //calculate the distance from player and enemy
 
         var distance = Vector3.Distance(agent.transform.position, player.transform.position);
@@ -53,11 +60,13 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (fov.canSeePlayer && !playerInAttackRange)
         {
+            
             ChasePlayer();       
         }
-            
 
-        if (!fov.canSeePlayer && distance <= 6 && !playerInAttackRange) 
+
+        if (!fov.canSeePlayer && distance <= 6 && !playerInAttackRange)
+            
             ChasePlayer();
 
         if (playerInAttackRange && fov.canSeePlayer) AttackPlayer();
@@ -108,6 +117,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void AttackPlayer()
     {
+        
+
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
@@ -120,6 +131,7 @@ public class EnemyAiTutorial : MonoBehaviour
             //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
+
             print("attacking");
 
             ///End of attack code
@@ -127,6 +139,7 @@ public class EnemyAiTutorial : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+        
     }
     private void ResetAttack()
     {
@@ -144,11 +157,5 @@ public class EnemyAiTutorial : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, attackRange);
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawWireSphere(transform.position, sightRange);
-    //}
+    
 }
