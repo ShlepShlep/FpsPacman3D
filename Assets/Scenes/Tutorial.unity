@@ -1492,6 +1492,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5d6982fa757ac4eaafd20fcf47d97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letterComponent: {fileID: 0}
+  teleporter: {fileID: 0}
+  letterCount: 0
+  sceneName: Maze
 --- !u!1 &2093619264
 GameObject:
   m_ObjectHideFlags: 0

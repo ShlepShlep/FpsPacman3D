@@ -7,6 +7,8 @@ public class Teleporter : MonoBehaviour
 {
     public Player letterComponent;
     public GameObject teleporter;
+    public int letterCount;
+    public string sceneName;
     void Start()
     {
         
@@ -15,13 +17,13 @@ public class Teleporter : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Teleporter"))
         {
-            SceneManager.LoadScene("FinalGame");
+            SceneManager.LoadScene(sceneName);
         }
     }
 
     void Update()
     {
-        if (letterComponent.count < 1)
+        if (letterComponent.count < letterCount)
         {
             teleporter.SetActive(false);
         }

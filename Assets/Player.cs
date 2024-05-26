@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public LayerMask potionLayer;
     public LayerMask letterLayer;
     public int count = 0;
+    public string sceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
             }
 
         }
+        
 
 
     }
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Teleporter"))
         {
-            SceneManager.LoadScene("FinalGame");
+            SceneManager.LoadScene(sceneName);
         }
     }
 

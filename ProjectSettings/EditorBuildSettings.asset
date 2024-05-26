@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: 9e0c1487a9a173d478bea8a300b4297a
   - enabled: 1
-    path: Assets/Scenes/FinalGame.unity
+    path: Assets/Scenes/Maze.unity
     guid: 8ad9f90960487484d85a1ed0c122862e
+  - enabled: 1
+    path: Assets/Scenes/City.unity
+    guid: b038ddcb44f9c5a499451c053a74ea24
   m_configObjects: {}
