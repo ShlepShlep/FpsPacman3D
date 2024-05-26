@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -74,8 +75,14 @@ public class Player : MonoBehaviour
 
 
     }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Teleporter"))
+        {
+            SceneManager.LoadScene("FinalGame");
+        }
+    }
 
-    
     public void Speed()
     {
         StartCoroutine(SpeedCoroutine());
