@@ -153,5 +153,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(10);
         invisComponent.ren.enabled = true;
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        
     }
 }
