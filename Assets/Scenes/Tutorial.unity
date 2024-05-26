@@ -1200,24 +1200,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &1491339500 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3740988896655555178, guid: 5be14e79a4ee11444bb1839abf4b89b4, type: 3}
-  m_PrefabInstance: {fileID: 4157327526663375281}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1491339501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491339500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6954469c5f604545992a36aab96d82d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextLevelName: gretosScene
 --- !u!1 &1694770655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,13 +1704,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Teleporter
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3822888122944285139, guid: 5be14e79a4ee11444bb1839abf4b89b4, type: 3}
+      propertyPath: nextLevelName
+      value: gretosScene
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8949904343460794278, guid: 5be14e79a4ee11444bb1839abf4b89b4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3740988896655555178, guid: 5be14e79a4ee11444bb1839abf4b89b4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1491339501}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5be14e79a4ee11444bb1839abf4b89b4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

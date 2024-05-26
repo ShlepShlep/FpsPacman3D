@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5124755595508858476}
   - component: {fileID: 1685925710262465660}
   - component: {fileID: 8402450807013123036}
-  - component: {fileID: 8949904343460794278}
+  - component: {fileID: 3822888122944285139}
   m_Layer: 0
   m_Name: Teleporter
   m_TagString: Untagged
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8949904343460794278
+--- !u!114 &3822888122944285139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3740988896655555178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6954469c5f604545992a36aab96d82d, type: 3}
+  m_Script: {fileID: 11500000, guid: 847ce7daa7b67204b846ad7e2c02d613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevelName: 
