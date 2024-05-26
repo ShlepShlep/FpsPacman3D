@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: f8f78e68e4e25d4449815b371a3a5557
+  - enabled: 1
+    path: Assets/Scenes/gretosScene.unity
+    guid: 05fdc5b575f6dd048a7c748e63d8112d
   m_configObjects: {}
