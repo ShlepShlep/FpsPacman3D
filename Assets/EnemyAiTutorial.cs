@@ -14,6 +14,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public FieldOfView fov;
 
+    public GameObject warningMark;
+
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -22,7 +24,7 @@ public class EnemyAiTutorial : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
+    //public GameObject projectile;
 
     //States
     public float attackRange;
@@ -32,11 +34,12 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        
     }
 
     private void Update()
     {
+        warningMark.transform.LookAt(player.position);
+
         //Check for sight and attack range   
 
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -47,16 +50,30 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!fov.canSeePlayer && !playerInAttackRange) 
             Patroling();
-        if (fov.canSeePlayer && !playerInAttackRange) 
+
+        if (fov.canSeePlayer && !playerInAttackRange)
+        {
+            ChasePlayer();       
+        }
+            
+
+        if (!fov.canSeePlayer && distance <= 6 && !playerInAttackRange) 
             ChasePlayer();
-        if (!fov.canSeePlayer && distance <= 5 && !playerInAttackRange) 
-            ChasePlayer();
-        //if (playerInAttackRange && playerInSightRange) AttackPlayer();
+
+        if (playerInAttackRange && fov.canSeePlayer) AttackPlayer();
+    }
+
+    void UpdateTimer(float currentTime)
+    {
+        currentTime += 1;
+
+        float minutes = Mathf.FloorToInt(currentTime / 60);
+        float seconds = Mathf.FloorToInt(currentTime % 60);
     }
 
     private void Patroling()
     {
-        
+       
 
         if (!walkPointSet) SearchWalkPoint();
 
@@ -68,6 +85,8 @@ public class EnemyAiTutorial : MonoBehaviour
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+
+        warningMark.SetActive(false);
     }
     private void SearchWalkPoint()
     {
@@ -84,42 +103,46 @@ public class EnemyAiTutorial : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+        warningMark.SetActive(true);
     }
 
-    //private void AttackPlayer()
-    //{
-    //    //Make sure enemy doesn't move
-    //    agent.SetDestination(transform.position);
+    private void AttackPlayer()
+    {
+        //Make sure enemy doesn't move
+        agent.SetDestination(transform.position);
 
-    //    transform.LookAt(player);
+        transform.LookAt(player);
 
-    //    if (!alreadyAttacked)
-    //    {
-    //        ///Attack code here
-    //        Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-    //        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-    //        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-    //        ///End of attack code
+        if (!alreadyAttacked)
+        {
+            ///Attack code here
+            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
-    //        alreadyAttacked = true;
-    //        Invoke(nameof(ResetAttack), timeBetweenAttacks);
-    //    }
-    //}
-    //private void ResetAttack()
-    //{
-    //    alreadyAttacked = false;
-    //}
+            print("attacking");
 
-    //public void TakeDamage(int damage)
-    //{
-    //    health -= damage;
+            ///End of attack code
 
-    //    if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    //}
-    //private void DestroyEnemy()
-    //{
-    //    Destroy(gameObject);
-    //}
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+    }
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
 
     //private void OnDrawGizmosSelected()
     //{
