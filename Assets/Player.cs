@@ -10,11 +10,12 @@ public class Player : MonoBehaviour
     public FirstPersonMovement speedComponent;
     public Jump jumpComponent;
     public Invisibility invisComponent;
-    public UnityEvent onDrink;
     public GameObject equipText;
+    public GameObject collectText;
     public TextMeshProUGUI letterCountText;
     public Camera camera;
     public LayerMask potionLayer;
+    public LayerMask letterLayer;
     public int count = 0;
     // Start is called before the first frame update
     void Start()
@@ -52,22 +53,29 @@ public class Player : MonoBehaviour
                 Invisibility();
                 Destroy(hit.transform.gameObject);
             }
-            //onDrink.Invoke();
-            //Destroy(this.gameObject);
+            
+
+
+
+
         }
-        
-
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Letter"))
+        var collided0 = Physics.Raycast(cam.position, cam.forward, out var hit0, 2f, letterLayer);
+        collectText.SetActive(collided0);
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            count++;
-            letterCountText.text = "Letters Collected: " + count.ToString();
-            Destroy(other.gameObject);
+            if (collided0 && hit0.transform.gameObject.name == "letter")
+            {
+                count++;
+                letterCountText.text = "Letters Collected: " + count.ToString();
+                Destroy(hit0.transform.gameObject);
+            }
+
         }
+
+
     }
+
+    
     public void Speed()
     {
         StartCoroutine(SpeedCoroutine());
@@ -77,9 +85,9 @@ public class Player : MonoBehaviour
     {
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
-        speedComponent.speed = 9;
+        speedComponent.speed = 15;
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(10);
         speedComponent.speed = 5;
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
@@ -96,7 +104,7 @@ public class Player : MonoBehaviour
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
         speedComponent.speed = 2;
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(10);
         speedComponent.speed = 5;
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
@@ -113,7 +121,7 @@ public class Player : MonoBehaviour
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
         jumpComponent.jumpStrength = 5;
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(10);
         jumpComponent.jumpStrength = 2;
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
