@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
 
 
         }
+        
         var collided0 = Physics.Raycast(cam.position, cam.forward, out var hit0, 2f, letterLayer);
         collectText.SetActive(collided0);
         if (Input.GetKeyDown(KeyCode.C))
@@ -75,7 +76,7 @@ public class Player : MonoBehaviour
 
         }
         
-
+        
 
     }
     void OnCollisionEnter(Collision other)
