@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
                 letterCountText.text = "Letters Collected: " + count.ToString();
                 Destroy(hit0.transform.gameObject);
             }
+            DontDestroyOnLoad(equipText);
 
         }
         
