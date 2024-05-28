@@ -132,6 +132,7 @@ public class EnemyAiTutorial : MonoBehaviour
             //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 
 
+            attackSource.PlayOneShot(attackClip);
             print("attacking");
 
             ///End of attack code
