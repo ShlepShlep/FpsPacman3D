@@ -87,16 +87,16 @@ public class Player : MonoBehaviour
         equipGunText.SetActive(collidedGun && weapon==null);
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (collidedGun && hitGun.transform.gameObject.name.Contains("gun"))
+            if (collidedGun && hitGun.transform.gameObject.name.Contains("Gun"))
             {
                 weapon = hitGun.transform.GetComponent<Weapon>();
+                weapon.cam = camera;
                 Grab(weapon);
             }
             else
             {
                 Drop();
             }
-            DontDestroyOnLoad(equipGunText);
 
         }
     }

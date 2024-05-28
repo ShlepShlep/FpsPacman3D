@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 875081258158887885}
   - component: {fileID: 8800189641282444122}
   - component: {fileID: 6879238264706474265}
+  - component: {fileID: 6363533793771316085}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Untagged
@@ -395,6 +396,39 @@ MonoBehaviour:
   headToLower: {fileID: 6746799089245160130}
   crouchYHeadPosition: 1
   colliderToLower: {fileID: 977734734755984625}
+--- !u!114 &6363533793771316085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145368344194021396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c3cb4ab7e3b034ab19effb08e8c59c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedComponent: {fileID: 0}
+  jumpComponent: {fileID: 0}
+  invisComponent: {fileID: 0}
+  equipText: {fileID: 0}
+  collectText: {fileID: 0}
+  equipGunText: {fileID: 0}
+  letterCountText: {fileID: 0}
+  camera: {fileID: 2591384019058663532}
+  potionLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  letterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  gunLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  count: 0
+  sceneName: 
+  weapon: {fileID: 0}
+  hand: {fileID: 8955988569147186976}
 --- !u!1 &3600701625383301619
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,8 +709,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185229176287292997}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.103, y: -0.279, z: 0.822}
+  m_LocalRotation: {x: 0.065461285, y: 0.83721215, z: 0.046780806, w: 0.54092723}
+  m_LocalPosition: {x: 7.28932, y: -2.2691364, z: 3.4483366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

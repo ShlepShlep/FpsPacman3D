@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1498646702667449157}
   - component: {fileID: 9208499516410953144}
   - component: {fileID: 390538340972498465}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,15 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f25e3545bf8ca4fa2a8e68ae98af2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onRightClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onShoot:
-    m_PersistentCalls:
-      m_Calls: []
-  onReload:
-    m_PersistentCalls:
-      m_Calls: []
   damage: 20
   bullets: 30
   bulletsPerShot: 1
@@ -140,7 +131,7 @@ MonoBehaviour:
   reloadSpeed: 1
   shotsInterval: 0.1
   allowButtonHold: 1
-  camera: {fileID: 0}
+  cam: {fileID: 0}
   attackPoint: {fileID: 3912822963257630336}
   enemyLayer:
     serializedVersion: 2
@@ -157,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3912822963257630336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
@@ -250,6 +241,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e525d5c90c0df01498dca09570cfb5ec, type: 3}
       propertyPath: m_Name
       value: assault3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e525d5c90c0df01498dca09570cfb5ec, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

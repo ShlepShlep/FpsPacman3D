@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
     bool isReadyToShoot;
     bool isReloading;
 
-    public Player player;
+    public Camera cam;
     public Transform attackPoint;
     public RaycastHit rayHit;
     public LayerMask enemyLayer;
@@ -80,9 +80,9 @@ public class Weapon : MonoBehaviour
         float y = Random.Range(-spread, spread);
 
         //suskaiciuot direction su spread
-        Vector3 direction = player.camera.transform.forward + new Vector3(x,y,0);
+        Vector3 direction = cam.transform.forward + new Vector3(x,y,0);
 
-        if(Physics.Raycast(player.camera.transform.position, direction, out rayHit, range, enemyLayer))
+        if(Physics.Raycast(cam.transform.position, direction, out rayHit, range, enemyLayer))
         {
             Debug.Log(rayHit.collider.name);
 
