@@ -88,7 +88,7 @@ public class Weapon : MonoBehaviour
 
             if (rayHit.collider.CompareTag("Enemy"))
             {
-                //rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
+                //
             }
         }
 
