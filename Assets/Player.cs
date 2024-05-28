@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
 
 public class Player : MonoBehaviour
@@ -13,17 +14,23 @@ public class Player : MonoBehaviour
     public Invisibility invisComponent;
     public GameObject equipText;
     public GameObject collectText;
+    public GameObject equipGunText;
     public TextMeshProUGUI letterCountText;
     public Camera camera;
     public LayerMask potionLayer;
     public LayerMask letterLayer;
+    public LayerMask gunLayer;
     public int count = 0;
     public string sceneName;
-    // Start is called before the first frame update
+
+    Health health;
+    public Weapon weapon;
+    public Transform hand;
     void Start()
     {
         speedComponent = GetComponent<FirstPersonMovement>();
         print("start");
+        health = GetComponent<Health>();
     }
     void Update()
     {
@@ -55,13 +62,13 @@ public class Player : MonoBehaviour
                 Invisibility();
                 Destroy(hit.transform.gameObject);
             }
-            
+
 
 
 
 
         }
-        
+
         var collided0 = Physics.Raycast(cam.position, cam.forward, out var hit0, 2f, letterLayer);
         collectText.SetActive(collided0);
         if (Input.GetKeyDown(KeyCode.C))
@@ -75,16 +82,56 @@ public class Player : MonoBehaviour
             DontDestroyOnLoad(equipText);
 
         }
-        
-        
 
+        var collidedGun = Physics.Raycast(cam.position, cam.forward, out var hitGun, 2f, gunLayer);
+        equipGunText.SetActive(collidedGun && weapon==null);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (collidedGun && hitGun.transform.gameObject.name.Contains("gun"))
+            {
+                weapon = hitGun.transform.GetComponent<Weapon>();
+                Grab(weapon);
+            }
+            else
+            {
+                Drop();
+            }
+            DontDestroyOnLoad(equipGunText);
+
+        }
     }
+
+    void Grab(Weapon newWeapon)
+    {
+        weapon = newWeapon;
+        weapon.GetComponent<Rigidbody>().isKinematic = true;
+        weapon.transform.position = hand.position;
+        weapon.transform.rotation = hand.rotation;
+        weapon.transform.parent = hand;
+    }
+
+    void Drop()
+    {
+        if (weapon == null) return;
+
+        weapon.GetComponent<Rigidbody>().isKinematic = false;
+        weapon.GetComponent<Rigidbody>().velocity = transform.forward * 5f;
+
+        weapon.transform.parent = null;
+        weapon = null;
+    }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Teleporter"))
         {
             SceneManager.LoadScene(sceneName);
         }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            health.Damage(10);
+        }
+
     }
 
     public void Speed()

@@ -7,9 +7,6 @@ using TMPro;
 
 public class Weapon : MonoBehaviour
 {
-    public UnityEvent onRightClick;
-    public UnityEvent onShoot;
-    public UnityEvent<bool> onReload;
 
     //gun stats
     public int damage;
@@ -31,7 +28,7 @@ public class Weapon : MonoBehaviour
     bool isReadyToShoot;
     bool isReloading;
 
-    public Camera camera;
+    public Player player;
     public Transform attackPoint;
     public RaycastHit rayHit;
     public LayerMask enemyLayer;
@@ -83,9 +80,9 @@ public class Weapon : MonoBehaviour
         float y = Random.Range(-spread, spread);
 
         //suskaiciuot direction su spread
-        Vector3 direction = camera.transform.forward + new Vector3(x,y,0);
+        Vector3 direction = player.camera.transform.forward + new Vector3(x,y,0);
 
-        if(Physics.Raycast(camera.transform.position, direction, out rayHit, range, enemyLayer))
+        if(Physics.Raycast(player.camera.transform.position, direction, out rayHit, range, enemyLayer))
         {
             Debug.Log(rayHit.collider.name);
 
