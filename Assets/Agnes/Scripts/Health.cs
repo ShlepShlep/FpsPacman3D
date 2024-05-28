@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    
+    /*
     public int health;
     public int maxHealth = 100;
     public bool shouldDestroy = true;
@@ -40,4 +42,5 @@ public class Health : MonoBehaviour
         onDie.Invoke();
         if (deathEffect != null) Instantiate(deathEffect, transform.position, Quaternion.identity);
     }
+    */
 }

@@ -15,22 +15,24 @@ public class Player : MonoBehaviour
     public GameObject equipText;
     public GameObject collectText;
     public GameObject equipGunText;
+    public GameObject enemy;
     public TextMeshProUGUI letterCountText;
+    public TextMeshProUGUI healthText;
     public Camera camera;
     public LayerMask potionLayer;
     public LayerMask letterLayer;
     public LayerMask gunLayer;
     public int count = 0;
+    public int health = 3;
     public string sceneName;
 
-    Health health;
     public Weapon weapon;
     public Transform hand;
     void Start()
     {
         speedComponent = GetComponent<FirstPersonMovement>();
         print("start");
-        health = GetComponent<Health>();
+        //health = GetComponent<Health>();
     }
     void Update()
     {
@@ -129,12 +131,16 @@ public class Player : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            health.Damage(10);
+            health--;
+            healthText.text = "Lives left: " + health.ToString();
+            if (health<=0)
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+
         }
-
     }
-
-    public void Speed()
+    void Speed()
     {
         StartCoroutine(SpeedCoroutine());
     }
@@ -151,7 +157,7 @@ public class Player : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
-    public void SpeedSlow()
+    void SpeedSlow()
     {
         StartCoroutine(SpeedSlowCoroutine());
     }
@@ -168,7 +174,7 @@ public class Player : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
-    public void Jump()
+    void Jump()
     {
         StartCoroutine(JumpCoroutine());
     }
@@ -185,7 +191,7 @@ public class Player : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 
-    public void Invisibility()
+    void Invisibility()
     {
         StartCoroutine(InvisibleCoroutine());
     }
