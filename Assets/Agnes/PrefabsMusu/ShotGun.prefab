@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1498646702667449157}
   - component: {fileID: 9208499516410953144}
   - component: {fileID: 390538340972498465}
+  - component: {fileID: 1765848142243093409}
   m_Layer: 8
   m_Name: ShotGun
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329406697339375237}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.012928772, y: -0.7401542, z: 0.004761285, w: 0.6722961}
+  m_LocalRotation: {x: 0.012928771, y: -0.74015415, z: 0.0047612838, w: 0.67229605}
   m_LocalPosition: {x: 0.34900016, y: -0.561, z: 0.9560003}
   m_LocalScale: {x: 1.1999998, y: 0.24000005, z: 0.2799999}
   m_ConstrainProportionsScale: 0
@@ -52,7 +53,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329406697339375237}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -125,7 +126,7 @@ MonoBehaviour:
   bulletsPerShot: 6
   bulletsLeft: 0
   bulletsShot: 0
-  fireRate: 0.1
+  fireRate: 0
   spread: 0.08
   range: 50
   reloadSpeed: 1
@@ -139,6 +140,33 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
   bulletHoleGraphic: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
   text: {fileID: 0}
+--- !u!54 &1765848142243093409
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329406697339375237}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7473861387357482120
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +192,7 @@ Transform:
   m_GameObject: {fileID: 7473861387357482120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.949, y: 0.14, z: 0.64}
+  m_LocalPosition: {x: 0.825, y: 0.23, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,7 +224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f62f7dc06bd890d4aab43b8fd635fe02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f62f7dc06bd890d4aab43b8fd635fe02, type: 3}
       propertyPath: m_LocalPosition.z

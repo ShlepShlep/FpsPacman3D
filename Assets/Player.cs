@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public int count = 0;
     public int health = 3;
     public string sceneName;
+    public TextMeshProUGUI text;
 
     public Weapon weapon;
     public Transform hand;
@@ -90,10 +91,11 @@ public class Player : MonoBehaviour
         equipGunText.SetActive(collidedGun && weapon==null);
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (collidedGun && hitGun.transform.gameObject.name.Contains("Gun"))
+            if (collidedGun && hitGun.transform.gameObject.name.Contains("Gun") && weapon==null)
             {
                 weapon = hitGun.transform.GetComponent<Weapon>();
                 weapon.cam = camera;
+                weapon.text = text;
                 Grab(weapon);
             }
             else
@@ -121,6 +123,8 @@ public class Player : MonoBehaviour
         weapon.GetComponent<Rigidbody>().velocity = transform.forward * 5f;
 
         weapon.transform.parent = null;
+        weapon.bulletsLeft = 0;
+        weapon.text = null;
         weapon = null;
     }
 

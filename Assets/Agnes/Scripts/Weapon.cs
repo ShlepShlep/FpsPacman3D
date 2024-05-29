@@ -46,14 +46,13 @@ public class Weapon : MonoBehaviour
     }
     private void Update()
     {
-        if (cam != null)
+        if (cam != null && text!=null)
         {
 
             PlayerInput();
 
             text.SetText(bulletsLeft + "/" + bullets);
         }
-        
     }
 
     private void PlayerInput()
