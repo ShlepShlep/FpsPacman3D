@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 //using EZCameraShake;
 using TMPro;
+using System.Net;
+using Unity.VisualScripting;
 
 public class Weapon : MonoBehaviour
 {
@@ -44,9 +46,14 @@ public class Weapon : MonoBehaviour
     }
     private void Update()
     {
-        PlayerInput();
+        if (cam != null)
+        {
 
-        text.SetText(bulletsLeft + "/" + bullets);
+            PlayerInput();
+
+            text.SetText(bulletsLeft + "/" + bullets);
+        }
+        
     }
 
     private void PlayerInput()

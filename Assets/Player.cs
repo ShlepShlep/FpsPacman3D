@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public GameObject collectText;
     public GameObject equipGunText;
     public GameObject enemy;
+    public GameObject gunPrefab;
     public TextMeshProUGUI letterCountText;
     public TextMeshProUGUI healthText;
     public Camera camera;
