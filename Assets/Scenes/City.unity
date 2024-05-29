@@ -32789,7 +32789,7 @@ MonoBehaviour:
   letterComponent: {fileID: 1447805724}
   teleporter: {fileID: 1009145956}
   letterCount: 2
-  sceneName: 
+  sceneName: End
 --- !u!114 &1447805724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32823,7 +32823,7 @@ MonoBehaviour:
     m_Bits: 256
   count: 0
   health: 3
-  sceneName: 
+  sceneName: End
   weapon: {fileID: 0}
   hand: {fileID: 429388420}
 --- !u!1001 &1448814790
